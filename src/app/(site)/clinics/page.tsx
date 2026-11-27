@@ -48,6 +48,16 @@ export default async function ClinicsPage() {
               <FramedCard title={clinic.name} href={`/clinics/${clinic.slug}`} accent="coral" headingLevel="h2">
                 <p className="font-semibold">{formatWhen(clinic)}</p>
                 <p>{clinic.summary}</p>
+                {clinic.whatToBring && clinic.whatToBring.length > 0 && (
+  <div>
+    <p className="font-semibold">What to bring:</p>
+    <ul className="list-disc pl-5">
+      {clinic.whatToBring.map((entry, index) => (
+        <li key={entry.id ?? index}>{entry.item}</li>
+      ))}
+    </ul>
+  </div>
+)}
                 <ButtonLink href={`/clinics/${clinic.slug}`} className="w-fit">Book a time slot</ButtonLink>
               </FramedCard>
             </li>
